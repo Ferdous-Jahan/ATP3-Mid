@@ -11,12 +11,12 @@ exports.register= function (data) {
 exports.auth = function (req,res) {
     db.query(`SELECT * FROM userdetails WHERE userName = '${req.body.name}' AND password = '${req.body.password}'`,function (error, results, fields) {
         if (error) throw error;
-        if(results.length===1)
+        if(results[0].role == 'admin')
         {
             req.session.loggedin = true;
             req.session.username = req.body.name;
             req.session.userId = results[0].id;
-            res.redirect('/viewblog')
+            res.redirect('/admin')
         }
         else
         {

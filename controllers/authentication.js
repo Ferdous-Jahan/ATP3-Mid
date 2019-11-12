@@ -2,9 +2,9 @@ var express = require('express');
 var router = express.Router();
 var authHelper = require('../models/authentication');
 
-router.get('/register',function(req,res){
-    res.render('authentication/registration');
-});
+// router.get('/register',function(req,res){
+//     res.render('authentication/registration');
+// });
 
 router.post('/register',function(req,res){
     console.log(req.body);
