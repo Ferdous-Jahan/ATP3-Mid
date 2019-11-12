@@ -18,6 +18,9 @@
   "homepage": "https://github.com/Ferdous-Jahan/ATP3-Mid#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
-    "express": "^4.17.1"
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "mysql": "^2.17.1"
   }
 }

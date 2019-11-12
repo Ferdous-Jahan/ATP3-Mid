@@ -4,7 +4,7 @@ var mysql   = require('mysql');
 		host:'localhost',
 		user: 'root',
 		password: '',
-		database: 'onlinebooklibrary'
+		database: 'atp3-mid'
 	});
 	 
 	connection.connect(function(err) {
