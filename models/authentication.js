@@ -5,7 +5,7 @@ var db = require('./connection');
 exports.auth = function (req,res) {
     db.query(`SELECT * FROM employees WHERE userName = '${req.body.name}' AND password = '${req.body.password}'`,function (error, results, fields) {
         if (error) throw error;
-        if(results[0].role === 'admin')
+        else if(results[0].role === 'admin')
         {
             req.session.loggedin = true;
             req.session.username = req.body.name;
@@ -24,6 +24,5 @@ exports.auth = function (req,res) {
         {
             res.redirect('/auth');
         }
-      })
-    
+      })    
 }
