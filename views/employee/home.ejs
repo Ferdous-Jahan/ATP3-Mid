@@ -23,13 +23,13 @@
             <td><%= product.price %></td>
             <td>
 				<a href="/employee/edit/<%= product.id %>"> EDIT </a> | 
-				<!-- <a href="/admin/delete/<%= product.id %>"> DELETE </a> -->
+				<a href="/employee/delete/<%= product.id %>"> DELETE </a>
 			</td>
         </tr>
 
         <% }) %>
     </table>
-    <!-- <a href="/register"> Add Employee </a> -->
+    <a href="/add"> Add Product </a>
 </body>
 
 </html>

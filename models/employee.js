@@ -34,3 +34,34 @@ exports.editSingleProduct= function (req, res) {
     else
         res.redirect('/auth');
 }
+
+exports.deleteSingleProduct = function (req, res) {
+    if (req.session.loggedin) {
+        db.query(`DELETE FROM products WHERE id=${req.params.id}`, function (error, results, fields) {
+            if (error) throw error;
+            res.redirect('/employee');
+        })
+    }
+    else {
+        res.redirect('/auth');
+    }
+}
+
+exports.viewAdd = function (req, res) {
+    if (req.session.loggedin) {
+        res.render('employee/add');
+    }
+    else
+        res.redirect('/auth');
+}
+
+exports.add = function (req, res) {
+    if (req.session.loggedin) {
+        db.query(`INSERT INTO products( productName, quantity, price) VALUES ('${req.body.productName}',${req.body.quantity},${req.body.price})`, function (error, results, fields) {
+            if (error) throw error;
+            res.redirect('/employee')
+        })
+    }
+    else
+    res.redirect('/auth');
+}
