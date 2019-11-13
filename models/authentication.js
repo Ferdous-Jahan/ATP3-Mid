@@ -1,22 +1,24 @@
 var db = require('./connection');
 
-exports.register= function (data) {
-    db.query(`INSERT INTO userdetails( name, contact, userName, password, role) VALUES ('${data.name}','${data.contact}','${data.username}','${data.password}','employee')`,function (error, results, fields) {
-        if (error) throw error;
-        console.log('The solution is: ', results[0]);
-      })
-    
-}
+
 
 exports.auth = function (req,res) {
-    db.query(`SELECT * FROM userdetails WHERE userName = '${req.body.name}' AND password = '${req.body.password}'`,function (error, results, fields) {
+    db.query(`SELECT * FROM employees WHERE userName = '${req.body.name}' AND password = '${req.body.password}'`,function (error, results, fields) {
         if (error) throw error;
-        if(results[0].role == 'admin')
+        if(results[0].role === 'admin')
         {
             req.session.loggedin = true;
             req.session.username = req.body.name;
             req.session.userId = results[0].id;
-            res.redirect('/admin')
+            console.log(req.body);
+            res.redirect('/admin');
+        }
+        else if(results[0].role === 'employee')
+        {
+            req.session.loggedin = true;
+            req.session.username = req.body.name;
+            req.session.userId = results[0].id;
+            res.redirect('/employee');
         }
         else
         {

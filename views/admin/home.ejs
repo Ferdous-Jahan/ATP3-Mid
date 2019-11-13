@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>userlist</title>
+</head>
+<body>
+	<h1>User List</h1>
+
+	<a href="/home">Back</a> |
+	<a href="/logout">logout</a>
+
+<br><br>
+	<table border="1">
+		<tr>
+			<td>ID</td>
+            <td>NAME</td>
+            <td>User NAME</td>
+			<td>PASSWORD</td>
+			<td>Role</td>
+		</tr>
+
+	<% employess.foreach(function(employee)) %>
+		<tr>
+            <td><%= employee.id %></td>
+            <td><%= employee.name %></td>
+			<td><%= employee.userName %></td>
+            <td><%= employee.password %></td>
+            <td><%= employee.role %></td>
+			<td>
+				<!-- <a href="/user/edit/<%= employee.id %>"> EDIT </a> | 
+				<a href="/user/delete/<%= employee.id %>"> DELETE </a> | 
+				<a href="/user/details/<%= employee.id %>"> Details </a> -->
+			</td>
+		</tr>
+
+	<% } %>
+	</table>
+</body>
+</html>
