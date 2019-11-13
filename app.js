@@ -3,14 +3,14 @@ var bodyParse  	= require('body-parser');
 var exSession  	= require('express-session');
 var app 		= express();
 var authentication = require('./controllers/authentication');
-//var blog = require('./controllers/blog');
+var admin = require('./controllers/admin');
 
 app.set('view engine', 'ejs');
 
 app.use(bodyParse.urlencoded({extended:false}));
 app.use(exSession({secret:"my top secret value", saveUninitialized:true, resave:false}));
 app.use(authentication);
-//app.use(blog);
+app.use(admin);
 
 app.get('/', function(req, res){
     res.render('authentication/login');

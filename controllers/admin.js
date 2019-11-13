@@ -20,3 +20,7 @@ router.post('/register',function(req,res){
 })
 
 router.get('/admin', adminHelper.viewEmployee);
+router.get('/admin/edit/:id', adminHelper.viewSingleEmployee);
+router.post('/admin/edit/:id', adminHelper.editSingleEmployee);
+
+module.exports = router;
